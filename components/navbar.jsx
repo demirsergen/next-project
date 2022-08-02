@@ -4,7 +4,8 @@ import Link from "next/link";
 const Navbar = () => {
   const primaryLinks = "text-black font-bold text-xl";
   const linksFlex = "flex justify-between gap-2";
-  const navContainer = "w-3/4 h-12 mx-auto border-2 flex justify-between p-2";
+  const navContainer =
+    "w-full h-12 mx-auto flex justify-between py-2 px-8 bg-blue-100";
   return (
     <nav className={navContainer}>
       <h1 className="text-2xl">Rent Now!</h1>
