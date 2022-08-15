@@ -1,19 +1,34 @@
 import React, { useState } from "react";
 
 const Search = () => {
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [sortCategory, setSortCategory] = useState(null);
-  const [bedroomCount, setBedroomCount] = useState(null);
+  const [form, setForm] = useState({
+    city: "",
+    state: "",
+    category: "list-for-rent",
+    sortBy: "relevance",
+    bedroomCount: "studio",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Searching...");
+    console.log(form);
+    setForm({
+      city: "",
+      state: "",
+      category: "list-for-rent",
+      sortBy: "relevance",
+      bedroomCount: "studio",
+    });
   };
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const searchContainer = "w-1/5 h-screen bg-red-100";
+  const searchContainer = "w-1/5 h-screen bg-red-400";
   const inputBlock = "p-2 flex flex-col";
   const inputContainer = "w-48 border-2 border-black-100";
   const button =
@@ -25,23 +40,48 @@ const Search = () => {
           <label htmlFor="city">City:</label>
           <input
             type="text"
+            value={form.city}
             className={inputContainer}
             onChange={handleChange}
-            value={city}
+            name="city"
+            required
           />
         </div>
         <div className={inputBlock}>
           <label htmlFor="state">State Code:</label>
-          <input type="text" className={inputContainer} value={state} />
+          <input
+            type="text"
+            className={inputContainer}
+            value={form.state.toUpperCase()}
+            name="state"
+            onChange={handleChange}
+            required
+          />
         </div>
+        <div className={inputBlock}>
+          <label htmlFor="category">Category:</label>
+          <select
+            className={inputContainer}
+            value={form.category}
+            name="category"
+            onChange={handleChange}
+            required
+          >
+            <option value="list-for-rent">Rent</option>
+            <option value="list-for-sale">Sale</option>
+          </select>
+        </div>
+
         <div className={inputBlock}>
           <label htmlFor="sort_by">Sort by:</label>
           <select
-            name="sort_by"
             className={inputContainer}
-            value={sortCategory}
+            value={form.sortBy}
+            name="sortBy"
+            onChange={handleChange}
+            required
           >
-            <option value="relevance">Relevance</option>
+            <option defaultValue="relevance">Relevance</option>
             <option value="price_low">Lowest</option>
             <option value="price_high">Highest</option>
           </select>
@@ -49,10 +89,13 @@ const Search = () => {
         <div className={inputBlock}>
           <label htmlFor="beds_min">Min bed:</label>
           <select
-            name="beds_min"
             className={inputContainer}
-            value={setBedroomCount}
+            value={form.bedroomCount}
+            name="bedroomCount"
+            onChange={handleChange}
+            required
           >
+            <option value="studio">Studio</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
