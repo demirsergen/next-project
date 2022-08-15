@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Search = () => {
+const Search = ({ fetchData }) => {
   const [form, setForm] = useState({
     city: "",
     state: "",
@@ -11,7 +11,7 @@ const Search = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+    fetchData(form);
     setForm({
       city: "",
       state: "",
@@ -52,7 +52,7 @@ const Search = () => {
           <input
             type="text"
             className={inputContainer}
-            value={form.state.toUpperCase()}
+            value={form.state}
             name="state"
             onChange={handleChange}
             required
