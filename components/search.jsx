@@ -6,7 +6,7 @@ const Search = ({ fetchData }) => {
     state: "",
     category: "list-for-rent",
     sortBy: "relevance",
-    bedroomCount: "studio",
+    bedroomCount: 1,
   });
 
   const handleSubmit = (e) => {
@@ -95,7 +95,6 @@ const Search = ({ fetchData }) => {
             onChange={handleChange}
             required
           >
-            <option value="studio">Studio</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
