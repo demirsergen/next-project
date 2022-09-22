@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Search from "../components/search";
+import Results from "./results";
 
 const Homepage = () => {
-  const container = "w-full mx-auto ";
+  const [searchResults, setSearchResults] = useState([]);
+  const container = "w-full mx-auto flex ";
 
   const options = {
     method: "GET",
@@ -13,19 +15,19 @@ const Homepage = () => {
   };
 
   const fetchData = async (form) => {
-    console.log(form);
     const { city, state, category, sortBy, bedroomCount } = form;
 
     const url = `https://realty-in-us.p.rapidapi.com/properties/v2/${category}?city=${city}&state_code=${state.toUpperCase()}&limit=200&offset=0&sort=${sortBy}&beds_min=${bedroomCount}`;
 
     const res = await fetch(url, options);
     const data = await res.json();
-    console.log(data);
+    setSearchResults(data.properties);
   };
 
   return (
     <div className={`${container}`}>
       <Search fetchData={fetchData} />
+      <Results results={searchResults} />
     </div>
   );
 };
