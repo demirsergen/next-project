@@ -1,12 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 const Results = ({ results }) => {
   console.log(results);
   return (
     <div className="container flex flex-wrap align-center justify-between">
-      {results.map((result) => (
+      {results?.map((result) => (
         <div key={result.property_id} className="p-2 mx-auto border-2 w-64">
           <Image
             src={result.photos ? result.photos[0].href : result.thumbnail}

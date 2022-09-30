@@ -21,6 +21,7 @@ const Homepage = () => {
 
     const res = await fetch(url, options);
     const data = await res.json();
+    console.log(data);
     setSearchResults(data.properties);
   };
 

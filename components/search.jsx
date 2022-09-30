@@ -5,7 +5,7 @@ const Search = ({ fetchData }) => {
     city: "",
     state: "",
     category: "list-for-rent",
-    sortBy: "relevance",
+    // sortBy: "relevance",
     bedroomCount: 1,
   });
 
@@ -16,7 +16,7 @@ const Search = ({ fetchData }) => {
       city: "",
       state: "",
       category: "list-for-rent",
-      sortBy: "relevance",
+      // sortBy: "relevance",
       bedroomCount: "studio",
     });
   };
@@ -28,7 +28,7 @@ const Search = ({ fetchData }) => {
     });
   };
 
-  const searchContainer = "w-1/5 h-screen bg-red-400";
+  const searchContainer = "w-64 h-screen bg-red-400";
   const inputBlock = "p-2 flex flex-col";
   const inputContainer = "w-48 border-2 border-black-100";
   const button =
@@ -72,7 +72,7 @@ const Search = ({ fetchData }) => {
           </select>
         </div>
 
-        <div className={inputBlock}>
+        {/* <div className={inputBlock}>
           <label htmlFor="sort_by">Sort by:</label>
           <select
             className={inputContainer}
@@ -85,7 +85,7 @@ const Search = ({ fetchData }) => {
             <option value="price_low">Lowest</option>
             <option value="price_high">Highest</option>
           </select>
-        </div>
+        </div> */}
         <div className={inputBlock}>
           <label htmlFor="beds_min">Min bed:</label>
           <select
